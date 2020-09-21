@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class SliderWidget extends StatelessWidget {
   final String title;
@@ -20,6 +21,9 @@ class SliderWidget extends StatelessWidget {
           SvgPicture.asset(
             image,
             width: width * 0.6,
+            placeholderBuilder: (context) {
+              return Lottie.asset('assets/images/loading.json');
+            },
           ),
           SizedBox(
             height: 60,

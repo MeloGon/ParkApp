@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,16 +30,18 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              _supImages(),
-              _loginCard(),
-              _functionButtons(),
-              _dividerSocial(),
-              _socialIcons(),
-              _registerUser(),
-            ],
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _supImages(),
+                _loginCard(),
+                _functionButtons(),
+                _dividerSocial(),
+                _socialIcons(),
+                _registerUser(),
+              ],
+            ),
           ),
         ),
       ),
@@ -54,7 +57,12 @@ class _LoginPageState extends State<LoginPage> {
     var userType = Container(
       width: _screenSize.width * 0.7,
       height: _screenSize.height * 0.25,
-      child: SvgPicture.asset('assets/images/offroad.svg'),
+      child: SvgPicture.asset(
+        'assets/images/offroad.svg',
+        placeholderBuilder: (context) {
+          return Lottie.asset('assets/images/loading.json');
+        },
+      ),
     );
 
     return Row(
@@ -69,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
         style: TextStyle(
             fontFamily: 'Syne', fontSize: 18, fontWeight: FontWeight.w700));
     var labelUser = Text('Usuario:', style: styleLabel);
-    var labelPass = Text('Contrasena:', style: styleLabel);
+    var labelPass = Text('Contraseña:', style: styleLabel);
     var inputUser = Container(
       height: 40,
       child: TextFormField(
@@ -113,12 +121,13 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       padding: EdgeInsets.all(20.0),
       width: _screenSize.width * 1,
-      height: _screenSize.height * 0.36,
+      height: _screenSize.height * 0.43,
       child: Card(
         elevation: 10.0,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               titleCard,
@@ -186,7 +195,8 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.all(0.0),
     );
 
-    return Padding(
+    return Container(
+      height: _screenSize.height * 0.06,
       padding: const EdgeInsets.only(right: 25.0),
       child: Row(
         children: [checkRem, Expanded(child: logButton)],
@@ -221,18 +231,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _socialIcons() {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SignInButton(
           Buttons.Facebook,
+          mini: true,
           onPressed: () {},
         ),
         SignInButton(
-          Buttons.Google,
+          Buttons.Email,
+          mini: true,
           onPressed: () {},
         ),
         SignInButton(
-          Buttons.Twitter,
+          Buttons.Microsoft,
+          mini: true,
           onPressed: () {},
         ),
       ],
