@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
+
 class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -132,7 +135,7 @@ class MenuPage extends StatelessWidget {
               //loading de las imagenes
               FadeInImage(
                 image: NetworkImage(url),
-                placeholder: AssetImage('assets/images/logoparkapp.png'),
+                placeholder: AssetImage('assets/images/loading.gif'),
                 height: 140.0,
                 fit: BoxFit.cover,
               ),

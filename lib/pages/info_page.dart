@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_park/widgets/rbutton_widget.dart';
 
 class MyInfoPage extends StatefulWidget {
   @override
@@ -173,42 +174,48 @@ class _MyInfoPageState extends State<MyInfoPage> {
   }
 
   Widget optionButtons() {
-    var logButton = RaisedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, 'menupage');
-      },
-      child: Ink(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: <Color>[
-              Color(0xFF6C63FF),
-              Color(0xFF948EFD),
-              Color(0xFF6C63FF),
+    var saveButton = RoButton(
+        initColor: Color(0xFF6C63FF),
+        midColor: Color(0xFF948EFD),
+        endColor: Color(0xFF6C63FF),
+        txtButton: 'GUARDAR',
+        action: 'action_save');
+
+    var editButton = RoButton(
+        initColor: Color(0xFF6C63FF),
+        midColor: Color(0xFF948EFD),
+        endColor: Color(0xFF6C63FF),
+        txtButton: 'EDITAR',
+        action: 'action_edit');
+
+    var cancelButton = RoButton(
+        initColor: Color(0xFF6C63FF),
+        midColor: Color(0xFF948EFD),
+        endColor: Color(0xFF6C63FF),
+        txtButton: 'CANCELAR',
+        action: 'action_cancel');
+    return Container(
+      margin: EdgeInsets.only(top: 20.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              editButton,
+              SizedBox(
+                width: 20.0,
+              ),
+              cancelButton
             ],
           ),
-          borderRadius: BorderRadius.all(Radius.circular(40.0)),
-        ),
-        child: Container(
-          constraints: const BoxConstraints(
-              minWidth: 88.0,
-              minHeight: 36.0), // min sizes for Material buttons
-          alignment: Alignment.center,
-          child: const Text(
-            'INGRESA',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'Syne',
-                fontSize: 18.0,
-                color: Colors.white,
-                fontWeight: FontWeight.w600),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              saveButton,
+            ],
           ),
-        ),
+        ],
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
-      padding: const EdgeInsets.all(0.0),
-    );
-    return Row(
-      children: [logButton],
     );
   }
 }
