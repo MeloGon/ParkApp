@@ -42,13 +42,16 @@ class Search extends StatelessWidget {
     return FutureProvider(
       create: (context) => placesProvider,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text('Parqueos'),
+        ),
         body: (currentPosition != null)
             ? Consumer<List<Place>>(
                 builder: (_, places, __) {
-                  return Column(
+                  return Stack(
                     children: <Widget>[
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.8,
+                        height: MediaQuery.of(context).size.height * 1,
                         width: MediaQuery.of(context).size.width,
                         child: GoogleMap(
                           initialCameraPosition: CameraPosition(
@@ -58,16 +61,26 @@ class Search extends StatelessWidget {
                           zoomGesturesEnabled: true,
                         ),
                       ),
-                      Expanded(
-                        child: ListView.builder(
-                            itemCount: places.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                child: ListTile(
-                                  title: Text(places[index].name),
-                                ),
-                              );
-                            }),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: ListView.builder(
+                              reverse: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: places.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.94,
+                                  child: Card(
+                                    child: ListTile(
+                                      title: Text(places[index].name),
+                                    ),
+                                  ),
+                                );
+                              }),
+                        ),
                       )
                     ],
                   );
