@@ -113,7 +113,7 @@ class MenuPage extends StatelessWidget {
       onTap: () {
         switch (code) {
           case 1:
-            return Navigator.pushNamed(context, 'myinfopage');
+            return Navigator.pushNamed(context, 'parkspage');
           case 2:
             return Navigator.pushNamed(context, 'myinfopage');
           case 3:

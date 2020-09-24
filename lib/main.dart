@@ -3,6 +3,7 @@ import 'package:flutter_park/pages/info_page.dart';
 import 'package:flutter_park/pages/landing_page.dart';
 import 'package:flutter_park/pages/login_page.dart';
 import 'package:flutter_park/pages/menu_page.dart';
+import 'package:flutter_park/pages/parks_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         'loginpage': (BuildContext context) => LoginPage(),
         'menupage': (BuildContext context) => MenuPage(),
         'myinfopage': (BuildContext context) => MyInfoPage(),
+        'parkspage': (BuildContext context) => ParksPage(),
       },
     );
   }
